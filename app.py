@@ -1,4 +1,3 @@
-import os
 from flask import Flask, render_template, redirect, request
 from flask_scss import Scss
 from flask_sqlalchemy import SQLAlchemy
@@ -8,7 +7,7 @@ app = Flask(__name__)
 Scss(app)
 basedir = os.path.abspath(os.path.dirname(__file__))
 
-app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///" + os.path.join(basedir, "example.db")
+app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///"
 app.config["SQLALCHEMY_TRACK_MODIFICATION"] = False
 db = SQLAlchemy(app)
 
