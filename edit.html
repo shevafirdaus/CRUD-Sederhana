@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% block head %} 
+<h1>Tugas LOE</h1>
+{% endblock %}
+
+{% block body %}
+<div class="content">
+        <h1>Edit tugas kamu!</h1>
+        <form action="/edit/{{task.id}}" method="POST">
+            <input type="text" name="content" id="content" value="{{task.content}}"/>
+            <input type="submit" value="Perbarui"/>
+        </form>
+    </div>
+{% endblock %}
