@@ -8,7 +8,7 @@ app = Flask(__name__)
 Scss(app)
 basedir = os.path.abspath(os.path.dirname(__file__))
 
-app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///"
+app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///" + os.path.join(basedir, "example.db")
 app.config["SQLALCHEMY_TRACK_MODIFICATION"] = False
 db = SQLAlchemy(app)
 
