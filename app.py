@@ -6,10 +6,12 @@ from datetime import datetime, timezone
 
 app = Flask(__name__)
 Scss(app)
-basedir = os.path.abspath(os.path.dirname(__file__))
 
+# Gunakan absolute path ke lokasi proyek
+basedir = os.path.abspath(os.path.dirname(__file__))
 app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///" + os.path.join(basedir, "example.db")
-app.config["SQLALCHEMY_TRACK_MODIFICATION"] = False
+app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
+
 db = SQLAlchemy(app)
 
 class MyTask(db.Model):
@@ -19,55 +21,51 @@ class MyTask(db.Model):
     created = db.Column(db.DateTime, default=lambda: datetime.now(timezone.utc))
 
     def __repr__(self) -> str:
-        return f"Task{self.id}"
+        return f"Task {self.id}"
 
-    with app.app_context():
-        db.create_all()
+# --- BARIS INI PENTING! ---
+# Menjamin tabel otomatis terbuat saat Flask dinyalakan oleh PythonAnywhere
+with app.app_context():
+    db.create_all()
+# --------------------------
 
 @app.route("/", methods=["POST", "GET"])
 def index():
-#TAMBAH TUGAS
     if request.method == "POST":
-        current_task = request.form['content']
+        current_task = request.form["content"]
         new_task = MyTask(content=current_task)
         try:
             db.session.add(new_task)
             db.session.commit()
             return redirect("/")
         except Exception as e:
-            print(f"ERROR{e}")
-            return f"ERROR{e}"
-#SEMUA TUGAS
+            return f"Error saat menambahkan tugas: {e}"
     else:
         tasks = MyTask.query.order_by(MyTask.created).all()
-        return render_template('index.html', tasks=tasks)
-
-#HAPUS TUGAS
+        return render_template("index.html", tasks=tasks)
 
 @app.route("/delete/<int:id>")
-def delete(id:int):
-    delete_task = MyTask.query.get_or_404(id)
+def delete(id):
+    task_to_delete = MyTask.query.get_or_404(id)
     try:
-        db.session.delete(delete_task)
+        db.session.delete(task_to_delete)
         db.session.commit()
         return redirect("/")
     except Exception as e:
-        return f"ERROR:{e}"
+        return f"Error saat menghapus tugas: {e}"
 
 @app.route("/edit/<int:id>", methods=["GET", "POST"])
-def edit(id:int):
+def edit(id):
     task = MyTask.query.get_or_404(id)
     if request.method == "POST":
-        task.content = request.form['content']
+        task.content = request.form["content"]
         try:
             db.session.commit()
             return redirect("/")
         except Exception as e:
-            return f"ERROR:{e}"
+            return f"Error saat memperbarui tugas: {e}"
     else:
-        return render_template('edit.html', task=task)
-
-
+        return render_template("edit.html", task=task)
 
 if __name__ == "__main__":
     app.run(debug=True)
