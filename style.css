@@ -1,80 +1,135 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap');
+
 body {
-  font-family: Georgia, "Times New Roman", Times, serif;
+  font-family: 'Poppins', sans-serif;
   margin: 0;
   padding: 0;
-  background-color: rgb(146, 157, 153);
+  background-color: #2f3e46;
+  color: #333;
 }
 
-/* Mengatur h1 "Tugas LOE" yang berada di luar kotak .content */
 body > h1 {
   text-align: center;
-  color: #d6cdcd;
-  margin-top: 30px;
+  color: #f4f6f8;
+  margin-top: 40px;
+  font-weight: 600;
+  letter-spacing: 1px;
 }
 
 .content {
-  max-width: 800px;
-  margin: 20px auto;
-  padding: 20px;
-  background-color: white;
-  border-radius: 10px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Perbaikan dari black() ke rgba() */
+  max-width: 650px;
+  margin: 30px auto;
+  padding: 32px;
+  background-color: #ffffff;
+  border-radius: 16px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
   text-align: center;
 }
 
+.content h1 {
+  font-size: 1.5rem;
+  color: #1a202c;
+  margin-bottom: 24px;
+}
+
+/* Tabel Modern */
 .content table {
   width: 100%;
   margin-top: 20px;
+  margin-bottom: 30px;
   border-collapse: collapse;
 }
 
-.content table th, 
-.content table td {
-  padding: 10px;
-  border: 1px solid #ccc;
+.content table th {
+  background-color: #f8fafc;
+  color: #64748b;
+  font-weight: 600;
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  padding: 12px;
+  border-bottom: 2px solid #e2e8f0;
 }
 
-/* Perbaikan selector th */
-.content table th {
-  background-color: #f0f0f0;
-  color: #333;
+.content table td {
+  padding: 14px 12px;
+  border-bottom: 1px solid #f1f5f9;
+  font-size: 0.95rem;
+  vertical-align: middle;
+}
+
+/* Tombol Aksi */
+.action-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
 }
 
 .content a {
   display: inline-block;
-  padding: 8px 16px;
-  margin: 5px;
-  border-radius: 20px;
-  background-color: rgb(27, 53, 53);
+  padding: 6px 14px;
+  border-radius: 6px;
   text-decoration: none;
-  transition: background-color 0.3s ease;
+  font-size: 0.85rem;
+  font-weight: 500;
+  transition: all 0.2s ease;
+}
+
+.btn-delete {
+  background-color: #fee2e2;
+  color: #dc2626;
+}
+
+.btn-delete:hover {
+  background-color: #dc2626;
+  color: #ffffff;
+}
+
+.btn-edit {
+  background-color: #e0f2fe;
+  color: #0284c7;
+}
+
+.btn-edit:hover {
+  background-color: #0284c7;
+  color: #ffffff;
+}
+
+/* Form Input */
+form {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  margin-top: 15px;
+}
+
+.content input[type="text"] {
+  flex: 1;
+  padding: 10px 14px;
+  border: 1px solid #cbd5e1;
+  border-radius: 8px;
+  outline: none;
+  font-family: inherit;
+  font-size: 0.95rem;
+  transition: border-color 0.2s ease;
+}
+
+.content input[type="text"]:focus {
+  border-color: #2563eb;
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+}
+
+.content input[type="submit"] {
+  padding: 10px 20px;
+  background-color: #16a34a;
   color: white;
-}
-
-.content a:hover {
-  background-color: rgb(51, 126, 32);
-}
-
-.content input {
-  padding: 10px;
-  margin: 5px;
-  border: solid 1px;
-  border-radius: 5px;
-}
-
-.content #btn_add {
-  background-color: green;
-  color: #fff;
+  border: none;
+  border-radius: 8px;
+  font-weight: 500;
   cursor: pointer;
+  transition: background-color 0.2s ease;
 }
 
-.content #btn_add:hover {
-  background-color: green;
+.content input[type="submit"]:hover {
+  background-color: #15803d;
 }
-body > h1 {
-  text-align: center !important;
-  color: #d6cdcd !important;
-  width: 100% !important;
-  margin-top: 20px;
-}
-/*# sourceMappingURL=style.css.map */
