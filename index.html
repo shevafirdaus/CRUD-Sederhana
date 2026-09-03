@@ -1,16 +1,18 @@
-{% extends 'base.html'%}
+{% extends 'base.html' %}
 
 {% block head %}
 <title>Tugas LOE</title>   
 {% endblock %}
 
 {% block body %}
-<div class="content">
-        <h1>SEPA'S SCHEDULE</h1>
+<h1 style="text-align: center; color: black; margin-top: 30px;">Tugas LOE</h1>
 
-        {% if tasks | length < 1%}
+<div class="content">
+    <h1>SEPA'S SCHEDULE</h1>
+
+    {% if tasks | length < 1 %}
         <h3>Tugas Kosong.. Buat disini!</h3>
-        {% else %}
+    {% else %}
         <table>
             <tr>
                 <th>Tugas</th>
@@ -19,21 +21,22 @@
             </tr>
             {% for task in tasks %}
                 <tr>
-                    <td>{{task.content}}</td>
-                    <td>{{task.created.strftime("%d-%m-%Y")}}</td>
+                    <td>{{ task.content }}</td>
+                    <td>{{ task.created.strftime("%d-%m-%Y") }}</td>
                     <td>
-                        <a href="/delete/{{task.id}}">Delete</a>
-                        <br/>
-                        <a href="/edit/{{task.id}}">Edit</a>
+                        <div class="action-buttons">
+                            <a href="/edit/{{ task.id }}" class="btn-edit">Edit</a>
+                            <a href="/delete/{{ task.id }}" class="btn-delete">Delete</a>
+                        </div>
                     </td>
                 </tr>
             {% endfor %}
         </table>
-        {% endif %}
-        <form action="/" method="POST">
-            <input type="text" name="content" id="content">
-            <input type="submit" value="Tambahkan" id="btn_add">
-            
-        </form>
-    </div>
+    {% endif %}
+
+    <form action="/" method="POST">
+        <input type="text" name="content" id="content" placeholder="Ketik tugas baru di sini..." required>
+        <input type="submit" value="Tambahkan" id="btn_add">
+    </form>
+</div>
 {% endblock %}
