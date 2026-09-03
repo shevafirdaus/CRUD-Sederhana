@@ -71,5 +71,10 @@ body > h1 {
 .content #btn_add:hover {
   background-color: green;
 }
-
+body > h1 {
+  text-align: center !important;
+  color: #d6cdcd !important;
+  width: 100% !important;
+  margin-top: 20px;
+}
 /*# sourceMappingURL=style.css.map */
