@@ -5,28 +5,41 @@ body {
   background-color: rgb(146, 157, 153);
 }
 
+/* Mengatur h1 "Tugas LOE" yang berada di luar kotak .content */
+body > h1 {
+  text-align: center;
+  color: #d6cdcd;
+  margin-top: 30px;
+}
+
 .content {
   max-width: 800px;
-  margin: 50px auto;
+  margin: 20px auto;
   padding: 20px;
   background-color: white;
   border-radius: 10px;
-  box-shadow: 0 0 10px black(0, 0, 0, 0.1);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Perbaikan dari black() ke rgba() */
   text-align: center;
 }
+
 .content table {
   width: 100%;
   margin-top: 20px;
   border-collapse: collapse;
 }
-.content table th, .content table td {
+
+.content table th, 
+.content table td {
   padding: 10px;
   border: 1px solid #ccc;
 }
-.content table th th, .content table td th {
+
+/* Perbaikan selector th */
+.content table th {
   background-color: #f0f0f0;
   color: #333;
 }
+
 .content a {
   display: inline-block;
   padding: 8px 16px;
@@ -37,20 +50,26 @@ body {
   transition: background-color 0.3s ease;
   color: white;
 }
+
 .content a:hover {
   background-color: rgb(51, 126, 32);
 }
+
 .content input {
   padding: 10px;
   margin: 5px;
   border: solid 1px;
   border-radius: 5px;
 }
+
 .content #btn_add {
   background-color: green;
   color: #fff;
   cursor: pointer;
 }
+
 .content #btn_add:hover {
   background-color: green;
-}/*# sourceMappingURL=style.css.map */
+}
+
+/*# sourceMappingURL=style.css.map */
