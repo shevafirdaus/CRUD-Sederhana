@@ -1,10 +1,11 @@
 {% extends 'base.html' %}
 
 {% block head %} 
-<h1 style="text-align: center; color: #d6cdcd;">Tugas LOE</h1>
 {% endblock %}
 
 {% block body %}
+<h1 style="text-align: center; color: #d6cdcd;">Tugas LOE</h1>
+
 <div class="content">
         <h1>Edit tugas kamu!</h1>
         <form action="/edit/{{task.id}}" method="POST">
